@@ -1,0 +1,35 @@
+{
+    "compatibleVersion": 3,
+    "bundleVersion": 1,
+    "icon": "icon.png",
+    "commands": [{
+            "name": "post selected",
+            "identifier": "post-selected",
+            "script": "./my-command.js",
+            "handler": "postSelected"
+        },
+        {
+            "name": "update",
+            "identifier": "update",
+            "script": "./my-command.js",
+            "handler": "update"
+        },
+        {
+            "name": "cp",
+            "script": "./my-command.js",
+            "handlers": {
+                "actions": {
+                    "Copy.finish": "onCopy"
+                }
+            },
+            "identifier": "action-cp"
+        }
+    ],
+    "menu": {
+        "title": "super sync",
+        "items": [
+            "post-selected",
+            "update"
+        ]
+    }
+}
