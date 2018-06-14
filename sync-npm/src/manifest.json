@@ -1,8 +1,8 @@
 {
-    "name": "房多多Sketch模块同步",
-    "description": "房多多的Sketch模块同步插件",
-    "author": "sunjigang",
-    "authorEmail": "sunjigang@fangdd.com",
+    "name": "Sketch模块同步",
+    "description": "Sketch模块同步插件",
+    "author": "madordie",
+    "authorEmail": "e.madordie@gmail.com",
     "homepage": "https://madordie.github.io",
     "identifier": "com.madordie.fdd.sketch-sync",
     "compatibleVersion": 3,

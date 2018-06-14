@@ -2,7 +2,7 @@ const fetch = require('sketch-polyfill-fetch');
 const UI = require('sketch/ui');
 
 var pluginProject = '';
-const host = 'http://10.12.12.10:3010/';
+const host = 'http://127.0.0.1:3010/';
 const API = (uri, opt) => {
     return fetch(encodeURI(host + uri), opt);
 };
@@ -126,9 +126,10 @@ export function postSelected(context) {
                     method: 'POST',
                     body: selectionsString,
                 })
-                .then(res => res.text());
+                .then(res => res.blob());
         })
-        .then(code => {
+        .then(data => {
+            var code = NSString.alloc().initWithData_encoding(data, NSUTF8StringEncoding);
             UI.message('上传' + codeFormat(code));
         })
         .catch(e => {
@@ -187,8 +188,9 @@ export function update(context) {
             }
             var uri = res.path + '/' + module;
             return API('static/' + uri)
-                .then(res => res.text())
-                .then(layers => {
+                .then(res => res.blob())
+                .then(data => {
+                    var layers = NSString.alloc().initWithData_encoding(data, NSUTF8StringEncoding);
                     return new Promise((resolve, reject) => {
                         resolve({
                             project: uri,
@@ -224,8 +226,8 @@ export function projectMk(context) {
     }
 
     API('ls?path=' + project)
-        .then(res => res.text())
-        .then(code => {
+        .then(res => res.blob())
+        .then(data => {
             UI.message('项目"' + project + '"创建完成');
         })
         .catch(e => {
@@ -268,8 +270,9 @@ export function projectRm(context) {
                     return;
                 } else {
                     API('rm?path=' + project)
-                        .then(res => res.text())
-                        .then(code => {
+                        .then(res => res.blob())
+                        .then(data => {
+                            var code = NSString.alloc().initWithData_encoding(data, NSUTF8StringEncoding);
                             if (code == '1') {
                                 UI.alert('已成功删除', '但是我还是不放心的备份了一下。。需要恢复还能找我');
                             } else {
