@@ -1,33 +1,53 @@
 {
+    "name": "房多多Sketch模块同步",
+    "description": "房多多的Sketch模块同步插件",
+    "author": "sunjigang",
+    "authorEmail": "sunjigang@fangdd.com",
+    "homepage": "https://madordie.github.io",
+    "identifier": "com.madordie.fdd.sketch-sync",
     "compatibleVersion": 3,
     "bundleVersion": 1,
     "icon": "icon.png",
     "commands": [{
-            "name": "post selected",
+            "name": "创建新项目",
+            "identifier": "project-manage-mk",
+            "script": "./my-command.js",
+            "handler": "projectMk"
+        },
+        {
+            "name": "删除项目",
+            "identifier": "project-manage-rm",
+            "script": "./my-command.js",
+            "handler": "projectRm"
+        },
+        {
+            "name": "切换选中项目",
+            "identifier": "project-manage-sel",
+            "script": "my-command.js"
+        },
+        {
+            "name": "上传选中的画板",
             "identifier": "post-selected",
             "script": "./my-command.js",
             "handler": "postSelected"
         },
         {
-            "name": "update",
+            "name": "模块下载",
             "identifier": "update",
             "script": "./my-command.js",
             "handler": "update"
-        },
-        {
-            "name": "cp",
-            "script": "./my-command.js",
-            "handlers": {
-                "actions": {
-                    "Copy.finish": "onCopy"
-                }
-            },
-            "identifier": "action-cp"
         }
     ],
     "menu": {
-        "title": "super sync",
-        "items": [
+        "title": "🍭模块同步",
+        "items": [{
+                "title": "项目管理",
+                "items": [
+                    "project-manage-sel",
+                    "project-manage-mk",
+                    "project-manage-rm"
+                ]
+            },
             "post-selected",
             "update"
         ]

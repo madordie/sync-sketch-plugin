@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var fs = require("fs");
+var backupPath = __dirname + '/backup'
 
 function rawBody(req, res, next) {
     req.setEncoding('utf8');
@@ -21,14 +22,18 @@ app.post('/update', (req, res) => {
     var file = req.query['file'] || '';
     if (!fs.existsSync(path)) {
         if (req.query['opt'] === 'nomk') {
-            res.end(JSON.stringify([]));
+            res.end('0');
             return;
         } else {
             fs.mkdirSync(path);
         }
     }
-    fs.writeFileSync(path + '/' + file, req.rawBody)
-    res.end(JSON.stringify({ 'msg': 'update OK' }));
+    try {
+        fs.writeFileSync(path + '/' + file, req.rawBody)
+        res.end('1');
+    } catch (error) {
+        res.end('-1');
+    }
 })
 
 app.get('/ls', function(req, res) {
@@ -53,11 +58,31 @@ app.get('/ls', function(req, res) {
     res.end(JSON.stringify(urls));
 })
 
+app.get('/rm', function(req, res) {
+    var path = req.query['path'] || '';
+    if (path.length === 0) {
+        res.end('0');
+    } else {
+        try {
+            fs.renameSync(__dirname + '/public/' + path, backupPath + '/' + (new Date()).getTime() + "_" + path)
+            res.end('1')
+        } catch (error) {
+            res.end('-1')
+        }
+    }
+})
+
 var server = app.listen(3010, function() {
 
     fs.exists(__dirname + "/public/", function(exists) {
         if (!exists) {
             fs.mkdirSync(__dirname + "/public/");
+        }
+    });
+
+    fs.exists(backupPath, function(exists) {
+        if (!exists) {
+            fs.mkdirSync(backupPath);
         }
     });
 
