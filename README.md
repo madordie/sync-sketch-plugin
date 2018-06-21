@@ -6,6 +6,9 @@
 
 [博客传送](https://madordie.github.io/post/sync-sketchplugin)
 
+ps. 由于此项目需要配合服务器接口，虽然将此出也开源，但是意味着插件无法直接使用。。所以木有插件下载地址。。
+如果只是想看看这个功能，看预览GIF就好，如果想自己试一下，最好具备[skpm](https://github.com/skpm/skpm)、[Node-js](https://nodejs.org/en)的运行环境和能力。
+
 ## 核心功能
 
 功能的实现都是通过[Sketch.app](https://www.sketchapp.com)的API实现
