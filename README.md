@@ -4,6 +4,8 @@
 
 ![预览](https://github.com/madordie/sync-sketch-plugin/blob/master/Untitled.gif?raw=true)
 
+[博客传送](https://madordie.github.io/post/sync-sketchplugin)
+
 ## 核心功能
 
 功能的实现都是通过[Sketch.app](https://www.sketchapp.com)的API实现
