@@ -116,7 +116,7 @@ MSDocument.currentDocument().pageTreeLayoutDidChange();
 
 ## 你可能需要的参考资料
 
-- Sketch的都文件：[Sketch-Headers](https://github.com/abynim/Sketch-Headers)，可以省去自己[class-dump](http://stevenygard.com/projects/class-dump/)的麻烦.
+- Sketch的头文件：[Sketch-Headers](https://github.com/abynim/Sketch-Headers)，可以省去自己[class-dump](http://stevenygard.com/projects/class-dump/)的麻烦.
 - 插件开发神器：[skpm](https://github.com/skpm/skpm)
 - 用来调试很不错：[Sketch DevTools](https://github.com/skpm/sketch-dev-tools)
 - 官方开发文档：[Sketch Developer](https://developer.sketchapp.com)
